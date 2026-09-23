@@ -1,0 +1,2 @@
+2026-07-23 23:17:57 [localhost-startStop-1] INFO  c.s.o.t.dealer.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-23 23:17:57 [localhost-startStop-1] INFO  c.s.o.t.d.s.TargetGenerateServlet - TargetGenerateServlet initialized.

@@ -1,0 +1,439 @@
+/* ============================================
+   LC Reconciliation - Suzuki Brand Theme
+   Colors: Navy #1a1a2e, Blue #0f3460, Red #e94560
+   ============================================ */
+
+/* Sidebar - Suzuki Dark Navy */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+}
+
+.sidebar-header {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.1);
+}
+
+.sidebar .nav-link {
+    color: rgba(255,255,255,0.65);
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    border-left: 3px solid transparent;
+    transition: all 0.25s ease;
+    border-radius: 0 6px 6px 0;
+    margin: 1px 8px 1px 0;
+}
+
+.sidebar .nav-link:hover {
+    color: #fff;
+    background: rgba(233,69,96,0.15);
+    border-left-color: rgba(233,69,96,0.5);
+}
+
+.sidebar .nav-link.active {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(233,69,96,0.25) 0%, rgba(15,52,96,0.15) 100%);
+    border-left-color: #e94560;
+    font-weight: 500;
+}
+
+.sidebar .nav-link i {
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-section-title {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.8rem 1rem 0.3rem;
+    display: block;
+    font-weight: 600;
+}
+
+/* Sidebar collapsed state */
+.sidebar.collapsed {
+    width: 60px;
+}
+.sidebar.collapsed .sidebar-header {
+    padding: 0.8rem 0.5rem;
+}
+.sidebar.collapsed .sidebar-header img { height: 24px; }
+.sidebar.collapsed .sidebar-header div { display: none; }
+.sidebar.collapsed .nav-link span,
+.sidebar.collapsed .nav-section-title { display: none; }
+.sidebar.collapsed .nav-link { text-align: center; padding: 0.7rem 0; border-radius: 0; margin: 0; }
+.sidebar.collapsed .nav-link i { margin: 0; font-size: 1.1rem; }
+body.sidebar-collapsed .main-content { margin-left: 60px; }
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    transition: margin-left 0.3s ease;
+}
+
+.main-header {
+    background: #fff;
+    border-bottom: 1px solid #e0e3e8;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.main-footer {
+    border-top: 1px solid #e0e3e8;
+    background: #fff;
+}
+
+/* Cards - Polished */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background: #fff;
+    border-bottom: 1px solid #eef0f2;
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: 600;
+}
+
+.stat-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 10px;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Buttons - Suzuki branded */
+.btn-primary {
+    background: linear-gradient(135deg, #0f3460, #1a5276);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0d2d52, #154360);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(15,52,96,0.3);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #198754, #20a06a);
+    border: none;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e94560, #d63851);
+    border: none;
+}
+
+/* Badges */
+.badge.bg-success { background: linear-gradient(135deg, #198754, #20a06a) !important; }
+.badge.bg-danger { background: linear-gradient(135deg, #e94560, #d63851) !important; }
+.badge.bg-primary { background: linear-gradient(135deg, #0f3460, #1a5276) !important; }
+.badge.bg-warning { background: linear-gradient(135deg, #ffc107, #e0a800) !important; }
+.badge.bg-info { background: linear-gradient(135deg, #0dcaf0, #0bb4d6) !important; }
+.badge.bg-dark { background: linear-gradient(135deg, #1a1a2e, #2d3238) !important; }
+
+/* Tables */
+.table {
+    font-size: 0.9rem;
+}
+
+.table thead th {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #495057;
+    border-bottom: 2px solid #e0e3e8;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(15,52,96,0.04);
+}
+
+/* Progress bars */
+.progress {
+    border-radius: 8px;
+    background: #e9ecef;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #0f3460, #e94560);
+    border-radius: 8px;
+}
+
+/* Upload Zone */
+.upload-zone {
+    border: 2px dashed #c5cad0;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #fafbfc;
+}
+
+.upload-zone:hover, .upload-zone.dragover {
+    border-color: #e94560;
+    background-color: rgba(233,69,96,0.05);
+}
+
+.upload-zone i {
+    font-size: 2.5rem;
+    color: #6c757d;
+}
+
+.upload-zone.dragover i {
+    color: #e94560;
+}
+
+/* Step Wizard */
+.step-wizard {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.step-wizard .step {
+    display: flex;
+    align-items: center;
+}
+
+.step-wizard .step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #dee2e6;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.step-wizard .step.active .step-number {
+    background: linear-gradient(135deg, #0f3460, #e94560);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(233,69,96,0.3);
+}
+
+.step-wizard .step.completed .step-number {
+    background: #198754;
+    color: #fff;
+}
+
+.step-wizard .step-line {
+    width: 80px;
+    height: 2px;
+    background: #dee2e6;
+    margin: 0 0.5rem;
+}
+
+.step-wizard .step-label {
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.step-wizard .step.active .step-label {
+    color: #0f3460;
+    font-weight: 600;
+}
+
+/* Form controls */
+.form-control:focus, .form-select:focus {
+    border-color: #e94560;
+    box-shadow: 0 0 0 0.2rem rgba(233,69,96,0.12);
+}
+
+/* Nav pills/tabs */
+.nav-pills .nav-link.active {
+    background: linear-gradient(135deg, #0f3460, #1a5276);
+}
+
+.nav-tabs .nav-link.active {
+    color: #0f3460;
+    font-weight: 600;
+    border-bottom-color: #e94560;
+}
+
+/* Toast Container */
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+}
+
+/* ============================================
+   Dark Theme
+   ============================================ */
+body.dark-theme {
+    background-color: #0d1117 !important;
+}
+body.dark-theme .main-content {
+    background-color: #0d1117;
+}
+body.dark-theme .main-header {
+    background: #161b22;
+    border-bottom-color: #30363d;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+body.dark-theme .main-footer {
+    background: #161b22;
+    border-top-color: #30363d;
+    color: #8b949e;
+}
+body.dark-theme .card {
+    background: #161b22;
+    border-color: #30363d;
+    color: #c9d1d9;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+}
+body.dark-theme .card-header {
+    background: #1c2128;
+    border-bottom-color: #30363d;
+    color: #c9d1d9;
+}
+body.dark-theme .table {
+    color: #c9d1d9;
+}
+body.dark-theme .table-light, body.dark-theme .table thead {
+    background-color: #1c2128 !important;
+    color: #8b949e;
+}
+body.dark-theme .table-hover tbody tr:hover {
+    background-color: #1c2128;
+    color: #c9d1d9;
+}
+body.dark-theme .form-control, body.dark-theme .form-select {
+    background-color: #0d1117;
+    border-color: #30363d;
+    color: #c9d1d9;
+}
+body.dark-theme .form-control:focus, body.dark-theme .form-select:focus {
+    background-color: #161b22;
+    border-color: #e94560;
+    color: #c9d1d9;
+}
+body.dark-theme .modal-content {
+    background: #161b22;
+    color: #c9d1d9;
+}
+body.dark-theme .modal-header, body.dark-theme .modal-footer {
+    border-color: #30363d;
+}
+body.dark-theme h5, body.dark-theme h4, body.dark-theme h3 {
+    color: #c9d1d9;
+}
+body.dark-theme .text-muted {
+    color: #8b949e !important;
+}
+body.dark-theme .btn-link.text-dark {
+    color: #c9d1d9 !important;
+}
+body.dark-theme .dropdown-menu {
+    background: #161b22;
+    border-color: #30363d;
+}
+body.dark-theme .dropdown-item {
+    color: #c9d1d9;
+}
+body.dark-theme .dropdown-item:hover {
+    background: #1c2128;
+}
+body.dark-theme .alert-info {
+    background: #0d2137;
+    border-color: #1a4060;
+    color: #79c0ff;
+}
+body.dark-theme .stat-card {
+    background: #161b22;
+}
+body.dark-theme .nav-pills .nav-link {
+    color: #8b949e;
+}
+body.dark-theme .nav-pills .nav-link.active {
+    background: linear-gradient(135deg, #0f3460, #e94560);
+}
+body.dark-theme .table-secondary {
+    background-color: #1c2128 !important;
+}
+body.dark-theme .upload-zone {
+    background: #161b22;
+    border-color: #30363d;
+    color: #8b949e;
+}
+body.dark-theme .upload-zone:hover {
+    border-color: #e94560;
+    background: rgba(233,69,96,0.05);
+}
+body.dark-theme .sidebar {
+    background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.4);
+}
+body.dark-theme .card-footer {
+    background: #1c2128;
+    border-top-color: #30363d;
+}
+body.dark-theme .page-link {
+    background: #0d1117;
+    border-color: #30363d;
+    color: #8b949e;
+}
+body.dark-theme .page-item.active .page-link {
+    background: #e94560;
+    border-color: #e94560;
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0 !important;
+    }
+    body.sidebar-collapsed .main-content {
+        margin-left: 0 !important;
+    }
+}

@@ -1,0 +1,12 @@
+2026-07-31 22:13:55 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:13:56 [localhost-startStop-1] INFO  c.s.o.d.a.s.DispatchAnalysisServlet - DispatchAnalysisServlet initialized.
+2026-07-31 22:48:34 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:48:34 [localhost-startStop-1] INFO  c.s.o.d.a.s.DispatchAnalysisServlet - DispatchAnalysisServlet initialized.
+2026-07-31 22:59:25 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:59:25 [localhost-startStop-1] INFO  c.s.o.d.a.s.DispatchAnalysisServlet - DispatchAnalysisServlet initialized.
+2026-07-31 23:09:09 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:09:09 [localhost-startStop-1] INFO  c.s.o.d.a.s.DispatchAnalysisServlet - DispatchAnalysisServlet initialized.
+2026-07-31 23:37:34 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:37:34 [localhost-startStop-1] INFO  c.s.o.d.a.s.DispatchAnalysisServlet - DispatchAnalysisServlet initialized.
+2026-07-31 23:51:35 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:51:35 [localhost-startStop-1] INFO  c.s.o.d.a.s.DispatchAnalysisServlet - DispatchAnalysisServlet initialized.

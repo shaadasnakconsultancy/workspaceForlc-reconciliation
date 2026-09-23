@@ -1,0 +1,20 @@
+2026-08-01 00:06:54 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:06:54 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 00:15:00 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:15:00 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 00:22:05 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:22:05 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 00:29:09 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:29:09 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 00:33:29 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:33:29 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 00:48:24 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:48:24 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 01:04:30 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:04:30 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 01:14:03 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:14:03 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 01:17:43 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:17:43 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.
+2026-08-01 01:21:34 [localhost-startStop-1] INFO  c.s.o.d.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:21:34 [localhost-startStop-1] INFO  c.s.o.d.d.s.GeneratePlanServlet - GeneratePlanServlet initialized.

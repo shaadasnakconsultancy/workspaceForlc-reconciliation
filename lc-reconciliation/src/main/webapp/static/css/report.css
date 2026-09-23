@@ -1,0 +1,98 @@
+/* Report Table Styles - matches existing LC Reconciliation report format */
+.report-table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0.85rem;
+}
+
+.report-table th,
+.report-table td {
+    border: 1px solid #999;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+}
+
+.report-table th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+}
+
+.report-table th.param-col,
+.report-table td.param-col {
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.report-table td.data-cell {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    padding-right: 34px;
+    padding-bottom: 20px;
+}
+
+.matched { background-color: #90ee90; font-weight: bold; }
+.lc-missing { background-color: #fff3b0; font-weight: bold; }
+.not-matched { background-color: #ffcc99; font-weight: bold; }
+
+.cell-indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 900;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+td.data-cell .cell-indicator {
+    position: absolute;
+    right: 6px;
+    bottom: 4px;
+}
+
+.cell-indicator.tick {
+    background-color: #e6f6e6;
+    color: #0a8a0a;
+    border: 1px solid #0a8a0a;
+}
+
+.cell-indicator.cross {
+    background-color: #fdeaea;
+    color: #c00000;
+    border: 1px solid #c00000;
+}
+
+.cell-indicator.no-compare {
+    background-color: #f1f1f1;
+    color: #666666;
+    border: 1px solid #666666;
+}
+
+/* Legend */
+.report-legend {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 6px 0 14px 0;
+    font-size: 13px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.report-legend .cell-indicator {
+    position: static;
+}

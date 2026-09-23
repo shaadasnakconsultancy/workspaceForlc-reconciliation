@@ -1,0 +1,2 @@
+2026-04-17 09:56:08 [localhost-startStop-1] INFO  c.s.o.r.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-04-17 09:56:08 [localhost-startStop-1] INFO  c.s.o.r.f.s.ForecastAnalysisServlet - ForecastAnalysisServlet initialized.

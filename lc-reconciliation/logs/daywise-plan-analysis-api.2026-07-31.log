@@ -1,0 +1,24 @@
+2026-07-31 22:13:57 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:13:57 [localhost-startStop-1] INFO  c.s.o.d.a.s.DayWisePlanAnalysisServlet - DayWisePlanAnalysisServlet initialized.
+2026-07-31 22:13:57 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:13:57 [localhost-startStop-1] INFO  c.s.o.d.a.s.DealerTruckDetailServlet - DealerTruckDetailServlet initialized.
+2026-07-31 22:48:35 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:48:35 [localhost-startStop-1] INFO  c.s.o.d.a.s.DayWisePlanAnalysisServlet - DayWisePlanAnalysisServlet initialized.
+2026-07-31 22:48:35 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:48:35 [localhost-startStop-1] INFO  c.s.o.d.a.s.DealerTruckDetailServlet - DealerTruckDetailServlet initialized.
+2026-07-31 22:59:27 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:59:27 [localhost-startStop-1] INFO  c.s.o.d.a.s.DayWisePlanAnalysisServlet - DayWisePlanAnalysisServlet initialized.
+2026-07-31 22:59:27 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:59:27 [localhost-startStop-1] INFO  c.s.o.d.a.s.DealerTruckDetailServlet - DealerTruckDetailServlet initialized.
+2026-07-31 23:09:10 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:09:10 [localhost-startStop-1] INFO  c.s.o.d.a.s.DayWisePlanAnalysisServlet - DayWisePlanAnalysisServlet initialized.
+2026-07-31 23:09:10 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:09:10 [localhost-startStop-1] INFO  c.s.o.d.a.s.DealerTruckDetailServlet - DealerTruckDetailServlet initialized.
+2026-07-31 23:37:35 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:37:35 [localhost-startStop-1] INFO  c.s.o.d.a.s.DayWisePlanAnalysisServlet - DayWisePlanAnalysisServlet initialized.
+2026-07-31 23:37:35 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:37:35 [localhost-startStop-1] INFO  c.s.o.d.a.s.DealerTruckDetailServlet - DealerTruckDetailServlet initialized.
+2026-07-31 23:51:36 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:51:36 [localhost-startStop-1] INFO  c.s.o.d.a.s.DayWisePlanAnalysisServlet - DayWisePlanAnalysisServlet initialized.
+2026-07-31 23:51:36 [localhost-startStop-1] INFO  c.s.o.d.a.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:51:36 [localhost-startStop-1] INFO  c.s.o.d.a.s.DealerTruckDetailServlet - DealerTruckDetailServlet initialized.

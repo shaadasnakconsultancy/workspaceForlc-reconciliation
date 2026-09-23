@@ -1,0 +1,20 @@
+2026-08-01 00:07:14 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:07:14 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 00:15:24 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:15:24 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 00:22:24 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:22:24 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 00:29:27 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:29:27 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 00:34:01 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:34:01 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 00:48:53 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 00:48:53 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 01:05:04 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:05:04 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 01:14:36 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:14:36 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 01:18:16 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:18:16 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.
+2026-08-01 01:22:10 [localhost-startStop-1] INFO  c.s.o.n.f.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-08-01 01:22:10 [localhost-startStop-1] INFO  c.s.o.n.f.s.NonProdForecastServlet - NonProdForecastServlet initialized.

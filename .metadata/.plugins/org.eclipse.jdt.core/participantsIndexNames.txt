@@ -1,0 +1,11 @@
+INDEX VERSION 1.134
+C:\WORK\ECLIPSE\workspaceForlc-reconciliation\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3820436949.index
+\lc-reconciliation\src\main\java
+C:\WORK\ECLIPSE\workspaceForlc-reconciliation\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\993118127.index
+\lc-reconciliation\src\main\java
+C:\WORK\ECLIPSE\workspaceForlc-reconciliation\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2567576329.index
+\lc-reconciliation\src\main\java
+C:\WORK\ECLIPSE\workspaceForlc-reconciliation\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2191990790.index
+\lc-reconciliation\src\main\java
+C:\WORK\ECLIPSE\workspaceForlc-reconciliation\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4102354401.index
+\lc-reconciliation\src\main\java

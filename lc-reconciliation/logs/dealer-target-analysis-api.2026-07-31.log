@@ -1,0 +1,12 @@
+2026-07-31 22:14:03 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:14:03 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.
+2026-07-31 22:48:41 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:48:41 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.
+2026-07-31 22:59:36 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 22:59:36 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.
+2026-07-31 23:09:14 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:09:14 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.
+2026-07-31 23:37:39 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:37:39 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.
+2026-07-31 23:51:40 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-07-31 23:51:40 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.

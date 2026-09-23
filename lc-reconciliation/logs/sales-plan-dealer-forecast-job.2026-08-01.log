@@ -1,0 +1,20 @@
+2026-08-01 00:07:21.801 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 00:07:21.803 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 00:15:40.075 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 00:15:40.080 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 00:22:35.388 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 00:22:35.395 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 00:29:36.186 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 00:29:36.189 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 00:34:15.198 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 00:34:15.200 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 00:49:07.597 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 00:49:07.607 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 01:05:16.754 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 01:05:16.754 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 01:14:49.836 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 01:14:49.846 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 01:18:30.251 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 01:18:30.259 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
+2026-08-01 01:22:22.166 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-01 01:22:22.176 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.
