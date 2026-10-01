@@ -100,7 +100,12 @@ function changePassword() {
         var res = JSON.parse(xhr.responseText);
         if (res.success) {
             document.getElementById('cpAlert').innerHTML = '<div class="alert alert-success py-1 small">' + res.message + '</div>';
-            setTimeout(function() { bootstrap.Modal.getInstance(document.getElementById('changePasswordModal')).hide(); }, 1500);
+            if (res.logout) {
+                // The session was invalidated server-side; send the user to the login screen.
+                setTimeout(function() { window.location.href = contextPath + '/login'; }, 1500);
+            } else {
+                setTimeout(function() { bootstrap.Modal.getInstance(document.getElementById('changePasswordModal')).hide(); }, 1500);
+            }
         } else {
             document.getElementById('cpAlert').innerHTML = '<div class="alert alert-danger py-1 small">' + res.message + '</div>';
         }

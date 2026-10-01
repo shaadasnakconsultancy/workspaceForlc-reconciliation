@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- WEB_VUL_10: force SameSite=Lax on cookies (session cookie was effectively SameSite=None).
+         Rfc6265CookieProcessor supports the sameSiteCookies attribute on Tomcat 8.5+. -->
+    <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"
+                     sameSiteCookies="lax" />
+</Context>

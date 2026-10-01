@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forgot Password - LC Reconciliation System</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; }
@@ -81,7 +81,7 @@
                     <div class="input-group input-group-lg">
                         <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
                         <input type="text" class="form-control" id="username" name="username"
-                               value="${param.username}" placeholder="Enter your username" required autofocus>
+                               value="<c:out value='${param.username}'/>" placeholder="Enter your username" required autofocus>
                     </div>
                 </div>
                 <div class="mb-4">
@@ -107,6 +107,6 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
 </body>
 </html>

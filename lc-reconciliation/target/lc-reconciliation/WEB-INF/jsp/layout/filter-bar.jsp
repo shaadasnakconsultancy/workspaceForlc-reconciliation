@@ -7,15 +7,15 @@
             <c:if test="${not empty extraHiddenFields}">${extraHiddenFields}</c:if>
             <div class="col-md-2">
                 <label class="form-label small mb-0">From Date</label>
-                <input type="date" class="form-control form-control-sm" name="fromDate" value="${fromDate}">
+                <input type="date" class="form-control form-control-sm" name="fromDate" value="<c:out value='${fromDate}'/>">
             </div>
             <div class="col-md-2">
                 <label class="form-label small mb-0">To Date</label>
-                <input type="date" class="form-control form-control-sm" name="toDate" value="${toDate}">
+                <input type="date" class="form-control form-control-sm" name="toDate" value="<c:out value='${toDate}'/>">
             </div>
             <div class="col-md-2">
                 <label class="form-label small mb-0">Search Job ID</label>
-                <input type="text" class="form-control form-control-sm" name="searchJobId" value="${searchJobId}" placeholder="Job ID">
+                <input type="text" class="form-control form-control-sm" name="searchJobId" value="<c:out value='${searchJobId}'/>" placeholder="Job ID">
             </div>
             <div class="col-md-1">
                 <label class="form-label small mb-0">Per Page</label>

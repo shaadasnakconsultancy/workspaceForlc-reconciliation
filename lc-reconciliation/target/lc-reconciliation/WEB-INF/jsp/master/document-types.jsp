@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document Types - LC Reconciliation</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/app.css" rel="stylesheet">
 </head>
 <body>
@@ -42,8 +42,8 @@
                             <tbody>
                                 <c:forEach var="dt" items="${documentTypes}">
                                     <tr data-id="${dt.id}">
-                                        <td><code>${dt.typeCode}</code></td>
-                                        <td>${dt.typeName}</td>
+                                        <td><code><c:out value="${dt.typeCode}"/></code></td>
+                                        <td><c:out value="${dt.typeName}"/></td>
                                         <td>${dt.pageLimit}</td>
                                         <td>
                                             <c:choose>
@@ -56,12 +56,14 @@
                                             </c:choose>
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-outline-primary" title="Edit"
-                                                    onclick="editDocType('${dt.id}', '${dt.typeCode}', '${dt.typeName}', ${dt.pageLimit}, ${dt.displayOrder}, ${dt.active})">
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit-dt" title="Edit"
+                                                    data-id="${dt.id}" data-code="<c:out value='${dt.typeCode}'/>"
+                                                    data-name="<c:out value='${dt.typeName}'/>" data-pagelimit="${dt.pageLimit}"
+                                                    data-order="${dt.displayOrder}" data-active="${dt.active}">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Delete"
-                                                    onclick="deleteDocType('${dt.id}', '${dt.typeName}')">
+                                            <button type="button" class="btn btn-sm btn-outline-danger btn-delete-dt" title="Delete"
+                                                    data-id="${dt.id}" data-name="<c:out value='${dt.typeName}'/>">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </td>
@@ -130,8 +132,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
     <script>
     var docTypeModal = null;
@@ -142,6 +144,15 @@
         $('#docTypeForm').on('submit', function(e) {
             e.preventDefault();
             saveDocType();
+        });
+
+        // Delegated handlers read user data from data-* attributes (inert strings, never executed as HTML/JS)
+        $('#docTypesTable').on('click', '.btn-edit-dt', function() {
+            var d = this.dataset;
+            editDocType(d.id, d.code, d.name, d.pagelimit, d.order, d.active === 'true');
+        });
+        $('#docTypesTable').on('click', '.btn-delete-dt', function() {
+            deleteDocType(this.dataset.id, this.dataset.name);
         });
     });
 

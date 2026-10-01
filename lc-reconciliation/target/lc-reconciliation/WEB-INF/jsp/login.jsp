@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - LC Reconciliation System</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; }
@@ -184,13 +184,14 @@
                 </div>
             </c:if>
 
-            <form method="post" action="${pageContext.request.contextPath}/login">
+            <form method="post" action="${pageContext.request.contextPath}/login" id="loginForm">
+                <input type="hidden" id="encryptedPassword" name="encryptedPassword">
                 <div class="mb-3">
                     <label for="username" class="form-label fw-semibold">Username</label>
                     <div class="input-group input-group-lg">
                         <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
                         <input type="text" class="form-control" id="username" name="username"
-                               value="${username}" placeholder="Enter your username" required autofocus>
+                               value="<c:out value='${username}'/>" placeholder="Enter your username" required autofocus>
                     </div>
                 </div>
                 <div class="mb-4">
@@ -217,6 +218,58 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script>
+    // WEB_VUL_07: encrypt the password in the browser (built-in Web Crypto, no external library)
+    // with the server's RSA public key before it is submitted, so plaintext is never transmitted.
+    (function () {
+        var ctx = '${pageContext.request.contextPath}';
+        var form = document.getElementById('loginForm');
+        var pwField = document.getElementById('password');
+        var encField = document.getElementById('encryptedPassword');
+        var subtle = window.crypto && window.crypto.subtle;
+        var keyPromise = null;
+
+        function b64ToBytes(b64) {
+            var bin = atob(b64), arr = new Uint8Array(bin.length);
+            for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+            return arr;
+        }
+        function bytesToB64(buf) {
+            var bytes = new Uint8Array(buf), bin = '';
+            for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+            return btoa(bin);
+        }
+        function loadKey() {
+            if (!keyPromise) {
+                keyPromise = fetch(ctx + '/login-key').then(function (r) { return r.json(); })
+                    .then(function (d) {
+                        return subtle.importKey('spki', b64ToBytes(d.publicKey).buffer,
+                            { name: 'RSA-OAEP', hash: 'SHA-256' }, false, ['encrypt']);
+                    });
+            }
+            return keyPromise;
+        }
+        if (subtle) { try { loadKey(); } catch (e) {} }
+
+        form.addEventListener('submit', function (e) {
+            if (form.dataset.enc === '1') return;               // already encrypted -> allow submit
+            if (!subtle) return;                                // no secure context -> submit as-is (server safety net)
+            e.preventDefault();
+            loadKey().then(function (key) {
+                return subtle.encrypt({ name: 'RSA-OAEP' }, key, new TextEncoder().encode(pwField.value));
+            }).then(function (cipher) {
+                encField.value = bytesToB64(cipher);
+                pwField.value = '';
+                pwField.removeAttribute('name');                // ensure plaintext password is not sent
+                form.dataset.enc = '1';
+                form.submit();
+            }).catch(function () {
+                form.dataset.enc = '1';                          // fall back to normal submit on any crypto error
+                form.submit();
+            });
+        });
+    })();
+    </script>
 </body>
 </html>

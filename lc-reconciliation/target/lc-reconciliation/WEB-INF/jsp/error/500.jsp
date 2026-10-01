@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>500 - Server Error</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light d-flex align-items-center justify-content-center" style="height:100vh">
     <div class="text-center">

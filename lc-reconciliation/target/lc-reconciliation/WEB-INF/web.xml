@@ -10,6 +10,16 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- Security Headers Filter (anti-clickjacking) - first so headers apply to all responses -->
+    <filter>
+        <filter-name>SecurityHeadersFilter</filter-name>
+        <filter-class>com.smipl.lcrecon.filter.SecurityHeadersFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityHeadersFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!-- Character Encoding Filter -->
     <filter>
         <filter-name>EncodingFilter</filter-name>
@@ -38,6 +48,10 @@
     <!-- Session Config -->
     <session-config>
         <session-timeout>60</session-timeout>
+        <!-- WEB_VUL_10: harden the session cookie (SameSite=Lax is set via META-INF/context.xml) -->
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
     </session-config>
 
     <!-- Error Pages -->

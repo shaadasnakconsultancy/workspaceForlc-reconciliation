@@ -1,0 +1,4 @@
+2026-09-22 22:45:17.810 [localhost-startStop-1] INFO  c.s.o.s.c.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;sendStringParametersAsUnicode=false
+2026-09-22 22:45:17.813 [localhost-startStop-1] INFO  c.s.o.s.c.s.ColorReportExportServlet - ColorReportExportServlet initialized.
+2026-09-22 22:45:17.813 [localhost-startStop-1] INFO  c.s.o.s.c.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;sendStringParametersAsUnicode=false
+2026-09-22 22:45:17.813 [localhost-startStop-1] INFO  c.s.o.s.c.servlet.ColorReportServlet - ColorReportServlet initialized.

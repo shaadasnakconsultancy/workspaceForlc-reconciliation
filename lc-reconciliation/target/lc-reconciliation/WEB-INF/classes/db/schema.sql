@@ -135,6 +135,10 @@ CREATE TABLE reconciliation_jobs (
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('reconciliation_jobs') AND name = 'created_by_department')
     ALTER TABLE reconciliation_jobs ADD created_by_department NVARCHAR(100)
 
+-- Reason the notification email was not sent (disabled / no recipient / SMTP failure). NULL when sent.
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('reconciliation_jobs') AND name = 'email_error')
+    ALTER TABLE reconciliation_jobs ADD email_error NVARCHAR(1000)
+
 -- Reconciliation results (per parameter per document)
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'reconciliation_results')
 CREATE TABLE reconciliation_results (

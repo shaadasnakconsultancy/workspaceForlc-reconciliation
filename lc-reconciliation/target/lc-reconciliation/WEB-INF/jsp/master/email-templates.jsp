@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Email Templates - LC Reconciliation</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/app.css" rel="stylesheet">
     <style>
         .subject-preview { max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -49,12 +49,12 @@
                                 <c:forEach var="t" items="${emailTemplates}">
                                     <tr class="${t.active ? '' : 'table-secondary'}">
                                         <td>
-                                            <strong>${t.templateName}</strong>
+                                            <strong><c:out value="${t.templateName}"/></strong>
                                             <c:if test="${t.defaultTemplate}">
                                                 <span class="badge bg-warning text-dark ms-1"><i class="bi bi-star-fill"></i> Default</span>
                                             </c:if>
                                         </td>
-                                        <td><div class="subject-preview text-muted">${t.subjectTemplate}</div></td>
+                                        <td><div class="subject-preview text-muted"><c:out value="${t.subjectTemplate}"/></div></td>
                                         <td>
                                             <c:choose>
                                                 <c:when test="${t.defaultTemplate}">
@@ -76,18 +76,18 @@
                                             </c:choose>
                                         </td>
                                         <td class="text-nowrap">
-                                            <button class="btn btn-sm btn-outline-primary" title="Edit"
-                                                    onclick="editTemplate(${t.id})">
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit-tpl" title="Edit"
+                                                    data-id="${t.id}">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
                                             <c:if test="${!t.defaultTemplate && t.active}">
-                                                <button class="btn btn-sm btn-outline-warning" title="Set as Default"
-                                                        onclick="setDefault(${t.id}, '${t.templateName}')">
+                                                <button type="button" class="btn btn-sm btn-outline-warning btn-default-tpl" title="Set as Default"
+                                                        data-id="${t.id}" data-name="<c:out value='${t.templateName}'/>">
                                                     <i class="bi bi-star"></i>
                                                 </button>
                                             </c:if>
-                                            <button class="btn btn-sm btn-outline-danger" title="Delete"
-                                                    onclick="deleteTemplate(${t.id}, '${t.templateName}')">
+                                            <button type="button" class="btn btn-sm btn-outline-danger btn-delete-tpl" title="Delete"
+                                                    data-id="${t.id}" data-name="<c:out value='${t.templateName}'/>">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </td>
@@ -214,8 +214,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
     <script>
     var contextPath = '${pageContext.request.contextPath}';
@@ -236,6 +236,17 @@
                 showAlert('info', 'Copied: ' + text);
             });
         }).css('cursor', 'pointer');
+
+        // Delegated handlers - user data read from data-* (inert), never interpolated into inline JS/HTML
+        $('#templatesTable').on('click', '.btn-edit-tpl', function() {
+            editTemplate(this.dataset.id);
+        });
+        $('#templatesTable').on('click', '.btn-default-tpl', function() {
+            setDefault(this.dataset.id, this.dataset.name);
+        });
+        $('#templatesTable').on('click', '.btn-delete-tpl', function() {
+            deleteTemplate(this.dataset.id, this.dataset.name);
+        });
     });
 
     // ---- Template CRUD ----

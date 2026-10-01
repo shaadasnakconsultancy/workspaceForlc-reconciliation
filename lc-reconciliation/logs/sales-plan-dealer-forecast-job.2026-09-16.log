@@ -1,0 +1,2 @@
+2026-08-12 20:33:06.520 [localhost-startStop-1] INFO  c.s.o.s.g.config.DatabaseConfig - DatabaseConfig initialised. URL=jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true;loginTimeout=30
+2026-08-12 20:33:06.561 [localhost-startStop-1] INFO  c.s.o.s.g.servlet.GenerateServlet - GenerateServlet initialised.

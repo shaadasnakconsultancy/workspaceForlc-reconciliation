@@ -89,7 +89,7 @@ $(document).ready(function() {
         success: function(groups) {
             if (groups && groups.length) {
                 for (var i = 0; i < groups.length; i++) {
-                    $('#emailGroupSelect').append('<option value="' + groups[i].id + '">' + groups[i].groupName + '</option>');
+                    $('#emailGroupSelect').append($('<option>').val(groups[i].id).text(groups[i].groupName));
                 }
             }
         }
@@ -106,6 +106,9 @@ function setupDropZone(zoneSelector, inputSelector, multiple, onFiles) {
     var input = $(inputSelector);
 
     zone.on('click', function() { input.click(); });
+    // The file input is a child of the zone; stop its (programmatic) click from bubbling back
+    // to the zone handler, which would call input.click() again -> infinite recursion.
+    input.on('click', function(e) { e.stopPropagation(); });
     input.on('change', function() { if (this.files.length) onFiles(this.files); });
 
     zone.on('dragover', function(e) { e.preventDefault(); zone.addClass('dragover'); });

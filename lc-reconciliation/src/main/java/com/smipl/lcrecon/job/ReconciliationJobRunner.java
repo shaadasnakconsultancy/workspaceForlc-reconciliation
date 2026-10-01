@@ -249,6 +249,7 @@ public class ReconciliationJobRunner implements Runnable {
                     List<ReconciliationResult> invoiceResults = gptService.parseDocumentResults(
                             invoiceGptResponse.text, "INVOICE", invoiceDoc.getDocumentTypeName());
                     fillMissingLcValues(invoiceResults, lcParams);
+                    forceCompliedParameters(invoiceResults);
                     allResults.addAll(invoiceResults);
                     docTypeNames.add(invoiceDoc.getDocumentTypeName());
 
@@ -670,6 +671,47 @@ public class ReconciliationJobRunner implements Runnable {
      * Fill in LC values for results where LCClauseDescription is missing from GPT response.
      * This happens for non-Invoice docs (PL, BL, COO etc.) whose schemas don't include LCClauseDescription.
      */
+    /**
+     * Parameters that are deliberately not reconciled against the LC.
+     *
+     * ExporterShipperAddress: the invoice usually carries the despatch or warehouse address while
+     * the LC carries the registered address, so a mismatch there means nothing to the business.
+     * The row is still reported, with the invoice value as evidence, but as Not Applicable.
+     *
+     * The Invoice prompt is told the same thing; this is the guarantee, because a prompt is an
+     * instruction to a model and not something that can be relied on absolutely.
+     */
+    private static final String NOT_RECONCILED_STATUS = "Not Applicable";
+    private static final String NOT_RECONCILED_REASON =
+            "Exporter/Beneficiary address is not reconciled against the LC.";
+    private static final Set<String> NOT_RECONCILED_PARAMETERS =
+            new LinkedHashSet<>(Arrays.asList("ExporterShipperAddress"));
+
+    /** Force the not-reconciled parameters to Not Applicable, keeping the extracted evidence. */
+    private void forceCompliedParameters(List<ReconciliationResult> results) {
+        for (ReconciliationResult r : results) {
+            if (r.getParameterName() == null || !NOT_RECONCILED_PARAMETERS.contains(r.getParameterName())) {
+                continue;
+            }
+            if (!NOT_RECONCILED_STATUS.equals(r.getStatus())) {
+                logger.info("Job {}: forcing {} to {} (was {})", jobId, r.getParameterName(),
+                        NOT_RECONCILED_STATUS, r.getStatus());
+                r.setStatus(NOT_RECONCILED_STATUS);
+            }
+            r.setReason(NOT_RECONCILED_REASON);
+            String evidence = r.getDocumentValue();
+            if (evidence == null || evidence.trim().isEmpty()) {
+                r.setDocumentValue(NOT_RECONCILED_STATUS + " - address not stated on invoice");
+            } else if (!evidence.startsWith(NOT_RECONCILED_STATUS)) {
+                // Evidence is stored as "<Status> - <value>"; rewrite the status half only.
+                int dash = evidence.indexOf(" - ");
+                r.setDocumentValue(dash > 0
+                        ? NOT_RECONCILED_STATUS + evidence.substring(dash)
+                        : NOT_RECONCILED_STATUS + " - " + evidence);
+            }
+        }
+    }
+
     private void fillMissingLcValues(List<ReconciliationResult> results, Map<String, String> lcParams) {
         for (ReconciliationResult r : results) {
             if ((r.getLcValue() == null || r.getLcValue().isEmpty()) && r.getParameterName() != null) {

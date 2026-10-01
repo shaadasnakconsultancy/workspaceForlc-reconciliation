@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Job Monitor - LC Reconciliation</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/app.css" rel="stylesheet">
 </head><body>
     <c:set var="pageTitle" value="Job Monitor" scope="request" />
@@ -79,6 +79,10 @@
                                     <c:choose>
                                         <c:when test="${job.emailSent}">
                                             <span class="badge bg-success"><i class="bi bi-check-circle"></i> Yes</span>
+                                        </c:when>
+                                        <c:when test="${not empty job.emailError}">
+                                            <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle"></i> Not sent</span>
+                                            <div class="small text-muted mt-1"><c:out value="${job.emailError}"/></div>
                                         </c:when>
                                         <c:otherwise>
                                             <span class="badge bg-secondary"><i class="bi bi-x-circle"></i> No</span>
@@ -266,7 +270,7 @@
                                         <tbody>
                                             <c:forEach var="doc" items="${supportingDocs}">
                                                 <tr>
-                                                    <td><span class="badge bg-secondary">${doc.documentTypeName}</span></td>
+                                                    <td><span class="badge bg-secondary"><c:out value="${doc.documentTypeName}"/></span></td>
                                                     <td><i class="bi bi-file-earmark text-primary"></i> ${doc.fileName}</td>
                                                     <td>
                                                         <fmt:formatNumber value="${doc.fileSize / 1024.0}" maxFractionDigits="1" /> KB
@@ -475,8 +479,8 @@
         </div>
         <%@ include file="layout/footer.jsp" %>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
     <script>
     var contextPath = '${pageContext.request.contextPath}';

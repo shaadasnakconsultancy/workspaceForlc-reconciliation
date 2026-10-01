@@ -35,6 +35,8 @@ BEGIN
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('smtp_username', '', 'SMTP');
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('smtp_password', '', 'SMTP');
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('smtp_tls_enabled', 'true', 'SMTP');
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('smtp_enabled', 'true', 'SMTP');
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('smtp_timeout_seconds', '20', 'SMTP');
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('notification_email_to', '', 'SMTP');
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('cost_openai_input_per_1m_tokens', '1.25', 'COST_RATES');
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('cost_openai_output_per_1m_tokens', '5.00', 'COST_RATES');
@@ -44,4 +46,24 @@ BEGIN
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('graph_client_id', '', 'GRAPH_API');
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('graph_client_secret', '', 'GRAPH_API');
     INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('graph_drive_id', '', 'GRAPH_API');
+    -- SAP OData API for HSN code compliance check
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('sap_base_url', 'https://vhszkd61ci.hec.suzuki.co.jp:44300/sap/opu/odata/sap/ZVINCSD_ZINCSDTBDPARTS_CDS/ZVINCSD_ZINCSDTBDPARTS', 'SAP_API');
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('sap_client', '110', 'SAP_API');
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('sap_username', '', 'SAP_API');
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('sap_password', '', 'SAP_API');
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('sap_enabled', 'false', 'SAP_API');
+    -- HSN comparison source: 'SAP' (SAP OData API) or 'INVOICE' (open-source PDF extraction of invoice page 2+)
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('hsn_source', 'SAP', 'SAP_API');
 END;
+
+-- Settings added after the initial release. The block above only runs on a fresh install, so each
+-- new key is inserted individually here to also reach already-deployed databases.
+IF NOT EXISTS (SELECT 1 FROM app_settings WHERE setting_key = 'smtp_enabled')
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('smtp_enabled', 'true', 'SMTP');
+
+IF NOT EXISTS (SELECT 1 FROM app_settings WHERE setting_key = 'smtp_timeout_seconds')
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('smtp_timeout_seconds', '20', 'SMTP');
+
+-- Hard wall-clock limit per reconciliation job; the watchdog fails the job and frees its worker thread.
+IF NOT EXISTS (SELECT 1 FROM app_settings WHERE setting_key = 'job_timeout_minutes')
+    INSERT INTO app_settings (setting_key, setting_value, setting_group) VALUES ('job_timeout_minutes', '120', 'JOB');

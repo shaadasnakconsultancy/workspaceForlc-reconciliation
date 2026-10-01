@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Settings - LC Reconciliation</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/app.css" rel="stylesheet">
 </head>
 <body>
@@ -46,9 +46,21 @@
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sap-tab" data-bs-toggle="tab" data-bs-target="#sap-panel"
+                            type="button" role="tab" aria-controls="sap-panel" aria-selected="false">
+                        <i class="bi bi-box-seam"></i> SAP (HSN)
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="cost-tab" data-bs-toggle="tab" data-bs-target="#cost-panel"
                             type="button" role="tab" aria-controls="cost-panel" aria-selected="false">
                         <i class="bi bi-currency-rupee"></i> Cost Rates
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="job-tab" data-bs-toggle="tab" data-bs-target="#job-panel"
+                            type="button" role="tab" aria-controls="job-panel" aria-selected="false">
+                        <i class="bi bi-hourglass-split"></i> Job Execution
                     </button>
                 </li>
             </ul>
@@ -140,6 +152,18 @@
                         <div class="card-header"><h5 class="mb-0"><i class="bi bi-envelope"></i> SMTP Configuration</h5></div>
                         <div class="card-body">
                             <form id="smtpForm">
+                                <div class="alert alert-light border d-flex align-items-center gap-3 mb-3">
+                                    <div class="form-check form-switch mb-0">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                               id="smtp_enabled" name="smtp_enabled"
+                                               ${smtpSettings['smtp_enabled'] == 'false' ? '' : 'checked'}>
+                                        <label class="form-check-label fw-bold" for="smtp_enabled">Enable Email Sending</label>
+                                    </div>
+                                    <span class="text-muted small">
+                                        When switched off, the system sends no email at all - no job reports,
+                                        no new-user credentials and no password-reset mails. Jobs still run and reports are still generated.
+                                    </span>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="smtp_host" class="form-label">SMTP Host <span class="text-danger">*</span></label>
@@ -182,7 +206,14 @@
                                         <input type="email" class="form-control" id="smtp_from" name="smtp_from"
                                                value="${smtpSettings['smtp_from']}" placeholder="noreply@company.com" required>
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="smtp_timeout_seconds" class="form-label">Timeout (seconds)</label>
+                                        <input type="number" class="form-control" id="smtp_timeout_seconds" name="smtp_timeout_seconds"
+                                               min="5" max="300"
+                                               value="${empty smtpSettings['smtp_timeout_seconds'] ? '20' : smtpSettings['smtp_timeout_seconds']}">
+                                        <div class="form-text">A job gives up on the email after this long and still completes.</div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
                                     </div>
                                 </div>
                                 <div class="d-flex gap-2">
@@ -274,6 +305,77 @@
                     </div>
                 </div>
 
+                <!-- SAP (HSN) Tab -->
+                <div class="tab-pane fade" id="sap-panel" role="tabpanel" aria-labelledby="sap-tab">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0"><i class="bi bi-box-seam"></i> SAP OData API - HSN Code Verification</h5></div>
+                        <div class="card-body">
+                            <div class="alert alert-info small mb-3">
+                                <i class="bi bi-info-circle"></i> During reconciliation, HSN codes declared in the LC (clause 45A) are verified against SAP.
+                                The invoice number extracted from the Invoice document is passed to SAP as <code>xblnr</code>, and each LC HSN code must be present in the SAP response.
+                            </div>
+                            <form id="sapForm">
+                                <div class="row">
+                                    <div class="col-md-9 mb-3">
+                                        <label for="sap_base_url" class="form-label">SAP OData Base URL <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="sap_base_url" name="sap_base_url"
+                                               value="${sapSettings['sap_base_url']}"
+                                               placeholder="https://host:44300/sap/opu/odata/sap/ZVINCSD_ZINCSDTBDPARTS_CDS/ZVINCSD_ZINCSDTBDPARTS">
+                                        <small class="text-muted">Service entity URL without query string. The app appends <code>?sap-client=..&amp;$filter=xblnr eq '&lt;invoice&gt;'&amp;$format=json</code>.</small>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="sap_client" class="form-label">SAP Client</label>
+                                        <input type="text" class="form-control" id="sap_client" name="sap_client"
+                                               value="${sapSettings['sap_client']}" placeholder="110">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="sap_username" class="form-label">Username <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="sap_username" name="sap_username"
+                                               value="${sapSettings['sap_username']}" autocomplete="off">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="sap_password" class="form-label">Password <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="sap_password" name="sap_password"
+                                                   value="${sapSettings['sap_password']}" autocomplete="new-password">
+                                            <button class="btn btn-outline-secondary toggle-password" type="button" data-target="sap_password">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="sap_enabled" class="form-label">HSN Check Enabled</label>
+                                        <select class="form-select" id="sap_enabled" name="sap_enabled">
+                                            <option value="true" ${sapSettings['sap_enabled'] == 'true' ? 'selected' : ''}>Yes</option>
+                                            <option value="false" ${sapSettings['sap_enabled'] == 'false' ? 'selected' : ''}>No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="hsn_source" class="form-label">HSN Comparison Source</label>
+                                        <select class="form-select" id="hsn_source" name="hsn_source">
+                                            <option value="SAP" ${sapSettings['hsn_source'] == 'SAP' ? 'selected' : ''}>SAP API</option>
+                                            <option value="INVOICE" ${sapSettings['hsn_source'] == 'INVOICE' ? 'selected' : ''}>Uploaded Invoice (page 2+)</option>
+                                        </select>
+                                        <small class="text-muted">SAP: compare LC HSN vs SAP API. Invoice: extract HSN from the uploaded invoice (page 2 onward) using open-source PDF text extraction — no OCR cost.</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-outline-info" onclick="testConnection('sap')">
+                                        <i class="bi bi-plug"></i> Test Connection
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save"></i> Save Settings
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Cost Rates Tab -->
                 <div class="tab-pane fade" id="cost-panel" role="tabpanel" aria-labelledby="cost-tab">
                     <div class="card">
@@ -315,12 +417,41 @@
                     </div>
                 </div>
 
+                <!-- Job Execution Tab -->
+                <div class="tab-pane fade" id="job-panel" role="tabpanel" aria-labelledby="job-tab">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0"><i class="bi bi-hourglass-split"></i> Job Execution</h5></div>
+                        <div class="card-body">
+                            <div class="alert alert-info small">
+                                <i class="bi bi-info-circle"></i> A reconciliation job that exceeds this limit is stopped
+                                automatically, marked <strong>FAILED</strong> with a timeout reason, and its worker thread is
+                                released. This is a safety net so one wedged job can never block the queue - set it comfortably
+                                above the longest LC you process.
+                            </div>
+                            <form id="jobForm">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="job_timeout_minutes" class="form-label">Job Timeout (minutes)</label>
+                                        <input type="number" class="form-control" id="job_timeout_minutes" name="job_timeout_minutes"
+                                               min="5" max="1440"
+                                               value="${empty jobSettings['job_timeout_minutes'] ? '120' : jobSettings['job_timeout_minutes']}">
+                                        <div class="form-text">Default 120. Applies to jobs submitted after saving.</div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save"></i> Save Job Settings
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <%@ include file="layout/footer.jsp" %>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
     <script>
     $(function() {
@@ -356,10 +487,25 @@
             saveSettings('smtp', '#smtpForm');
         });
 
+        // With email switched off the SMTP details may legitimately be blank, so drop the
+        // browser-side "required" validation that would otherwise block saving.
+        function applySmtpEnabledState() {
+            var on = $('#smtp_enabled').is(':checked');
+            $('#smtp_host, #smtp_port, #smtp_from').prop('required', on);
+        }
+        $('#smtp_enabled').on('change', applySmtpEnabledState);
+        applySmtpEnabledState();
+
         // Save Graph API settings
         $('#graphForm').on('submit', function(e) {
             e.preventDefault();
             saveSettings('graph', '#graphForm');
+        });
+
+        // Save SAP settings
+        $('#sapForm').on('submit', function(e) {
+            e.preventDefault();
+            saveSettings('sap', '#sapForm');
         });
 
         // Save Cost Rate settings
@@ -367,15 +513,23 @@
             e.preventDefault();
             saveSettings('cost', '#costForm');
         });
+
+        // Save Job Execution settings
+        $('#jobForm').on('submit', function(e) {
+            e.preventDefault();
+            saveSettings('job', '#jobForm');
+        });
     });
 
     function saveSettings(category, formSelector) {
-        var groupMap = { 'openai': 'OPENAI', 'docintel': 'DOC_INTELLIGENCE', 'smtp': 'SMTP', 'graph': 'GRAPH_API', 'cost': 'COST_RATES' };
+        var groupMap = { 'openai': 'OPENAI', 'docintel': 'DOC_INTELLIGENCE', 'smtp': 'SMTP', 'graph': 'GRAPH_API', 'sap': 'SAP_API', 'cost': 'COST_RATES', 'job': 'JOB' };
         var group = groupMap[category];
         var settings = {};
         $(formSelector).find('input, select').each(function() {
             var name = $(this).attr('name');
-            if (name) settings[name] = $(this).val();
+            if (!name) return;
+            // A checkbox reports "on" from .val() regardless of state, so read the state itself
+            settings[name] = $(this).is(':checkbox') ? ($(this).is(':checked') ? 'true' : 'false') : $(this).val();
         });
 
         $.ajax({
@@ -397,7 +551,43 @@
     }
 
     function testConnection(category) {
-        showAlert('info', 'Test connection will be available after configuring and saving the settings.');
+        var formMap = {
+            'openai': '#openaiForm', 'docintel': '#docIntelForm', 'smtp': '#smtpForm',
+            'graph': '#graphForm', 'sap': '#sapForm'
+        };
+        var formSelector = formMap[category];
+        if (!formSelector) return;
+
+        // Test whatever is on screen now, so settings can be verified before they are saved.
+        var settings = {};
+        $(formSelector).find('input, select').each(function() {
+            var name = $(this).attr('name');
+            if (!name) return;
+            settings[name] = $(this).is(':checkbox') ? ($(this).is(':checked') ? 'true' : 'false') : $(this).val();
+        });
+
+        var $btn = $(formSelector).find('.btn-outline-info');
+        var original = $btn.html();
+        $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span> Testing...');
+        showAlert('info', 'Testing connection, please wait...');
+
+        $.ajax({
+            url: '${pageContext.request.contextPath}/settings/test-connection',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ type: category, settings: settings }),
+            success: function(response) {
+                showAlert(response.success ? 'success' : 'danger', response.message);
+            },
+            error: function(xhr) {
+                showAlert('danger', 'Test failed: ' + (xhr.status === 403
+                    ? 'you do not have permission to test connections.'
+                    : 'the server did not respond (HTTP ' + xhr.status + ').'));
+            },
+            complete: function() {
+                $btn.prop('disabled', false).html(original);
+            }
+        });
     }
 
     function showAlert(type, message) {

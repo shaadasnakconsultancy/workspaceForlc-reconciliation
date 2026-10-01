@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Prompt Templates - LC Reconciliation</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/app.css" rel="stylesheet">
     <style>
         .prompt-preview { max-height: 60px; overflow: hidden; font-size: 0.8rem; color: #666; font-family: monospace; white-space: pre-wrap; }
@@ -50,8 +50,8 @@
                             <tbody>
                                 <c:forEach var="p" items="${prompts}">
                                     <tr class="${p.active ? '' : 'table-secondary'}">
-                                        <td><strong>${p.documentTypeName}</strong></td>
-                                        <td>${p.promptName}</td>
+                                        <td><strong><c:out value="${p.documentTypeName}"/></strong></td>
+                                        <td><c:out value="${p.promptName}"/></td>
                                         <td><span class="badge bg-secondary">v${p.version}</span></td>
                                         <td>
                                             <c:choose>
@@ -115,7 +115,7 @@
                             <select class="form-select" id="editDocTypeId">
                                 <option value="">-- Select --</option>
                                 <c:forEach var="dt" items="${documentTypes}">
-                                    <option value="${dt.id}">${dt.typeName} (${dt.typeCode})</option>
+                                    <option value="${dt.id}"><c:out value="${dt.typeName}"/> (<c:out value="${dt.typeCode}"/>)</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -146,8 +146,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
     <script>
     var contextPath = '${pageContext.request.contextPath}';

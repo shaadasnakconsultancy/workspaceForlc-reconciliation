@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cost Analysis - LC Reconciliation</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/app.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/chart.umd.min.js"></script>
 </head>
 <body>
     <c:set var="pageTitle" value="Cost Analysis" scope="request" />
@@ -78,9 +78,9 @@
                     <div class="card-body py-2">
                         <form class="row g-2 align-items-end" method="get">
                             <input type="hidden" name="view" value="report">
-                            <div class="col-md-2"><label class="form-label small mb-0">From Date</label><input type="date" class="form-control form-control-sm" name="fromDate" value="${fromDate}"></div>
-                            <div class="col-md-2"><label class="form-label small mb-0">To Date</label><input type="date" class="form-control form-control-sm" name="toDate" value="${toDate}"></div>
-                            <div class="col-md-2"><label class="form-label small mb-0">Search Job ID</label><input type="text" class="form-control form-control-sm" name="searchJobId" value="${searchJobId}" placeholder="Job ID"></div>
+                            <div class="col-md-2"><label class="form-label small mb-0">From Date</label><input type="date" class="form-control form-control-sm" name="fromDate" value="<c:out value='${fromDate}'/>"></div>
+                            <div class="col-md-2"><label class="form-label small mb-0">To Date</label><input type="date" class="form-control form-control-sm" name="toDate" value="<c:out value='${toDate}'/>"></div>
+                            <div class="col-md-2"><label class="form-label small mb-0">Search Job ID</label><input type="text" class="form-control form-control-sm" name="searchJobId" value="<c:out value='${searchJobId}'/>" placeholder="Job ID"></div>
                             <div class="col-md-1"><label class="form-label small mb-0">Per Page</label><select class="form-select form-select-sm" name="pageSize"><option value="10" ${pageSize==10?'selected':''}>10</option><option value="25" ${pageSize==25?'selected':''}>25</option><option value="50" ${pageSize==50?'selected':''}>50</option><option value="100" ${pageSize==100?'selected':''}>100</option></select></div>
                             <div class="col-md-2"><label class="form-label small mb-0">&nbsp;</label><button type="submit" class="btn btn-primary btn-sm w-100"><i class="bi bi-search"></i> Filter</button></div>
                             <div class="col-md-1"><label class="form-label small mb-0">&nbsp;</label><a href="${pageContext.request.contextPath}/cost-analysis?view=report" class="btn btn-outline-secondary btn-sm w-100"><i class="bi bi-x"></i> Clear</a></div>
@@ -205,8 +205,8 @@
         </div>
         <%@ include file="layout/footer.jsp" %>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
     <c:if test="${empty job && viewMode != 'report'}">
     <script>

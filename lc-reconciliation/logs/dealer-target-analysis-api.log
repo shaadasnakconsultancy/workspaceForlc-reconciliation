@@ -1,2 +1,2 @@
-2026-08-12 20:32:32 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
-2026-08-12 20:32:32 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.
+2026-09-22 22:44:42 [localhost-startStop-1] INFO  c.s.o.t.d.config.DatabaseConfig - DatabaseConfig loaded. URL: jdbc:sqlserver://139.59.4.149:1433;databaseName=oms_analytics;encrypt=false;trustServerCertificate=true
+2026-09-22 22:44:42 [localhost-startStop-1] INFO  c.s.o.t.d.s.DealerAnalysisServlet - DealerAnalysisServlet initialized.

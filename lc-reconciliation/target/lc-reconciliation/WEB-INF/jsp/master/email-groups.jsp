@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Email Groups - LC Reconciliation</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/static/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/vendor/bootstrap-icons.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/app.css" rel="stylesheet">
     <style>
         .group-row { cursor: pointer; }
@@ -49,9 +49,9 @@
                             </thead>
                             <tbody>
                                 <c:forEach var="g" items="${emailGroups}">
-                                    <tr class="group-row" data-group-id="${g.id}" onclick="selectGroup(${g.id}, '${g.groupName}')">
-                                        <td><i class="bi bi-people me-1"></i> <strong>${g.groupName}</strong></td>
-                                        <td><span class="text-muted">${g.description}</span></td>
+                                    <tr class="group-row" data-group-id="${g.id}" data-group-name="<c:out value='${g.groupName}'/>">
+                                        <td><i class="bi bi-people me-1"></i> <strong><c:out value="${g.groupName}"/></strong></td>
+                                        <td><span class="text-muted"><c:out value="${g.description}"/></span></td>
                                         <td>
                                             <span class="badge bg-info">${g.memberCount}</span>
                                         </td>
@@ -65,17 +65,17 @@
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
-                                        <td class="text-nowrap" onclick="event.stopPropagation();">
-                                            <button class="btn btn-sm btn-outline-info" title="Manage Members"
-                                                    onclick="selectGroup(${g.id}, '${g.groupName}')">
+                                        <td class="text-nowrap">
+                                            <button type="button" class="btn btn-sm btn-outline-info btn-members" title="Manage Members">
                                                 <i class="bi bi-person-lines-fill"></i>
                                             </button>
-                                            <button class="btn btn-sm btn-outline-primary" title="Edit"
-                                                    onclick="editGroup(${g.id}, '${g.groupName}', '${g.description}', ${g.active})">
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit-group" title="Edit"
+                                                    data-id="${g.id}" data-name="<c:out value='${g.groupName}'/>"
+                                                    data-desc="<c:out value='${g.description}'/>" data-active="${g.active}">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Delete"
-                                                    onclick="deleteGroup(${g.id}, '${g.groupName}')">
+                                            <button type="button" class="btn btn-sm btn-outline-danger btn-delete-group" title="Delete"
+                                                    data-id="${g.id}" data-name="<c:out value='${g.groupName}'/>">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </td>
@@ -193,8 +193,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/vendor/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
     <script>
     var contextPath = '${pageContext.request.contextPath}';
@@ -214,6 +214,29 @@
         $('#memberForm').on('submit', function(e) {
             e.preventDefault();
             addMember();
+        });
+
+        // Delegated handlers - user data read from data-* (inert), never interpolated into inline JS/HTML
+        $('#groupsTable').on('click', '.group-row', function(e) {
+            if ($(e.target).closest('button').length) return; // let button handlers deal with button clicks
+            selectGroup(this.dataset.groupId, this.dataset.groupName);
+        });
+        $('#groupsTable').on('click', '.btn-members', function(e) {
+            e.stopPropagation();
+            var tr = $(this).closest('.group-row')[0];
+            selectGroup(tr.dataset.groupId, tr.dataset.groupName);
+        });
+        $('#groupsTable').on('click', '.btn-edit-group', function(e) {
+            e.stopPropagation();
+            var d = this.dataset;
+            editGroup(d.id, d.name, d.desc, d.active === 'true');
+        });
+        $('#groupsTable').on('click', '.btn-delete-group', function(e) {
+            e.stopPropagation();
+            deleteGroup(this.dataset.id, this.dataset.name);
+        });
+        $('#membersTable').on('click', '.btn-remove-member', function() {
+            removeMember(this.dataset.id, this.dataset.name);
         });
     });
 
@@ -329,7 +352,7 @@
                         '<td><a href="mailto:' + escapeHtml(m.emailAddress) + '">' + escapeHtml(m.emailAddress) + '</a></td>' +
                         '<td>' + activeHtml + '</td>' +
                         '<td>' +
-                            '<button class="btn btn-sm btn-outline-danger" title="Remove" onclick="removeMember(' + m.id + ', \'' + escapeHtml(m.memberName) + '\')">' +
+                            '<button type="button" class="btn btn-sm btn-outline-danger btn-remove-member" title="Remove" data-id="' + m.id + '" data-name="' + escapeHtml(m.memberName) + '">' +
                                 '<i class="bi bi-person-x"></i> Remove' +
                             '</button>' +
                         '</td>' +
